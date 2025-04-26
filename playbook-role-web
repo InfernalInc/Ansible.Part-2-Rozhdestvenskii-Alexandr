@@ -1,0 +1,6 @@
+---
+- name: Deploy web servers
+  hosts: my
+  become: true
+  roles:
+    - web_information

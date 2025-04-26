@@ -1,0 +1,50 @@
+---
+- hosts: all
+
+  tasks:
+
+    - name: Create dir
+      shell:
+        "mkdir /home/alex/apache"
+
+
+    - name: Download and unpack apache
+      ansible.builtin.unarchive:
+        src: https://dlcdn.apache.org/kafka/4.0.0/kafka-4.0.0-src.tgz
+        dest: /home/alex/apache/
+        mode: '0770'
+        remote_src: yes
+
+
+
+
+
+
+
+# - name: Unarchive a file that needs to be downloaded (added in 2.0)
+#   ansible.builtin.unarchive:
+#     src: https://example.com/example.zip
+#     dest: /usr/local/bin
+#     remote_src: yes
+
+
+
+  # - name: Ensure that vim editor installed.
+  #   yum: name=vim state=present
+
+  # - name: Change ssh config
+  #   lineinfile:
+  #     path: /etc/ssh/sshd_config
+  #     regexp: '^PasswordAuthentication'
+  #     line: PasswordAuthentication yes
+  #   notify:
+  #     - Restart sshd
+  # - name: 
+  #   debug:
+  #     msg: "{{ ansible_facts.all_ipv4_addresses[1] }}"
+
+  # handlers:
+  # - name: Restart sshd
+  #   service:
+  #     name: sshd
+  #     state: restarted

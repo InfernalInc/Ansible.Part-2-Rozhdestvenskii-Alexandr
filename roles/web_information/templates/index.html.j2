@@ -1,0 +1,14 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <title>Информация о системе</title>
+</head>
+<body>
+    <h1>Системная информация</h1>
+    <p><strong>Процессор:</strong> {{ ansible_processor[0] }}</p>
+    <p><strong>Оперативная память:</strong> {{ ansible_memtotal_mb }} MB</p>
+    <p><strong>Первый HDD:</strong> {{ ansible_devices['sda']['size'] }}</p>
+    <p><strong>IP-адрес:</strong> {{ ansible_default_ipv4.address }}</p>
+</body>
+</html>

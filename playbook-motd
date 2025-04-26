@@ -1,0 +1,13 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    var_a: "#!/bin/sh\nprintf \"Hellow world\"\n"
+  tasks:
+
+    - name: Change motd
+      ansible.builtin.copy:
+        content: "{{ var_a }}"
+        dest: /etc/update-motd.d/99-hellow
+        mode: '0755'

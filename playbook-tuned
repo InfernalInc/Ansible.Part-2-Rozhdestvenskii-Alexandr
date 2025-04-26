@@ -1,0 +1,16 @@
+---
+- hosts: all
+  become: true
+  tasks:
+
+    - name: Install tuned
+      apt:
+        name: tuned
+        state: present
+        update_cache: yes
+        
+    - name: Start service tuned, if not started and enable
+      service:
+        name: tuned
+        state: started
+        enabled: yes

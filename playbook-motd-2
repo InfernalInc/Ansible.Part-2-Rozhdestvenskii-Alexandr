@@ -1,0 +1,15 @@
+---
+- hosts: all
+  become: true
+
+  vars:
+    var_a: "#!/bin/sh\nprintf \"Hellow world\\n\"\n"
+    var_b: "printf \"Have a nice day!\\n\"\n"
+
+  tasks:
+
+    - name: Change motd
+      ansible.builtin.copy:
+        content: "{{ var_a }}\nprintf \"IP {{ ansible_all_ipv4_addresses }}\\n\"\nprintf \"You HOST: {{ ansible_hostname }}\\n\"\n{{ var_b }}"
+        dest: /etc/update-motd.d/99-hellow
+        mode: '0755'
